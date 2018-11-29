@@ -3,12 +3,20 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href=”http://osm.org/copyright”>OpenStreetMap</a> contributors'
 }).addTo(map);
 
-$.getJSON("datos/pobla.geojson", function (data) {
-// add GeoJSON layer to the map once the file is loaded
+
+// Replace ./data.json with your JSON feed
+fetch('datos/pobla.geojson').then(response => {
+  return response.json();
+}).then(data => {
+  // Work with JSON data here
     var datalayer = L.geoJson(
             data, {onEachFeature: poblaOnEachFeature, color: 'red', style: style});
     datalayer.addTo(map);
+}).catch(err => {
+  // Do something for an error here
+  alert("Un error ha ocurrido");
 });
+
 
 function poblaOnEachFeature(feature, featureLayer) {
     featureLayer.on({

@@ -5,10 +5,29 @@
  */
 package Modelo;
 
+import javax.json.JsonObject;
+
 /**
  *
  * @author raguileoam
  */
 public class AreasVerdes {
-    private int area;
+    private JsonObject features;
+    private double area;
+
+    public AreasVerdes(JsonObject jsonObject ) {
+    this.features=jsonObject;
+    JsonObject properties=features.getJsonObject("properties");
+    this.area=properties.getJsonNumber("AREA").doubleValue();
+    }
+
+    @Override
+    public String toString() {
+        return features.toString();
+    }
+
+    public double getArea() {
+        return area;
+    }
+    
 }

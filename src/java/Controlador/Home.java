@@ -5,9 +5,13 @@
  */
 package Controlador;
 
+import Datos.DAOAreasVerdes;
+import Datos.DAOPoblacion;
+import Modelo.AreasVerdes;
+import Modelo.Poblacion;
+import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.time.Instant;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author raguileoam
  */
-@WebServlet(name = "Area", urlPatterns = {"/Area"})
+//@WebServlet(name = "Home", urlPatterns = {"/"})
 public class Home extends HttpServlet {
 
     /**
@@ -33,7 +37,12 @@ public class Home extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");     
+        response.setContentType("text/html;charset=UTF-8");   
+        String dir="/home/raguileoam/Documentos/5 Semestre/Estructura de datos/Proyecto Semestral/EDD-AreasVerdes";
+        ArrayList<Poblacion> poblacionArray = DAOPoblacion.loadJSON(dir);
+        request.setAttribute("datosPoblacion",poblacionArray);
+        ArrayList<AreasVerdes> areasVerdesArray=DAOAreasVerdes.loadJSON(dir);
+        request.setAttribute("datosAreasVerdes", areasVerdesArray);
         RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
         disp.forward(request, response);
     }

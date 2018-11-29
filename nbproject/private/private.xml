@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/raguileoam/Descargas/ModeloMVC/src/java/Controlador/Area.java</file>
-            <file>file:/home/raguileoam/Descargas/ModeloMVC/src/java/Controlador/Home.java</file>
-            <file>file:/home/raguileoam/Descargas/ModeloMVC/web/datos.js</file>
-            <file>file:/home/raguileoam/Descargas/ModeloMVC/src/java/Datos/DAOPoblacion.java</file>
-            <file>file:/home/raguileoam/Descargas/ModeloMVC/src/java/Datos/DAOVehiculo.java</file>
+            <file>file:/home/raguileoam/Documentos/5%20Semestre/Estructura%20de%20datos/Proyecto%20Semestral/EDD-AreasVerdes/src/java/Datos/DAOPoblacion.java</file>
+            <file>file:/home/raguileoam/Documentos/5%20Semestre/Estructura%20de%20datos/Proyecto%20Semestral/EDD-AreasVerdes/src/java/Modelo/Poblacion.java</file>
+            <file>file:/home/raguileoam/Documentos/5%20Semestre/Estructura%20de%20datos/Proyecto%20Semestral/EDD-AreasVerdes/src/java/Controlador/Home.java</file>
+            <file>file:/home/raguileoam/Documentos/5%20Semestre/Estructura%20de%20datos/Proyecto%20Semestral/EDD-AreasVerdes/src/java/Datos/DAOAreasVerdes.java</file>
         </group>
     </open-files>
 </project-private>

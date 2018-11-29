@@ -5,6 +5,7 @@
  */
 package Datos;
 
+import Modelo.AreasVerdes;
 import Modelo.Poblacion;
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,12 +21,12 @@ import javax.json.*;
  *
  * @author raguileoam
  */
-public class DAOPoblacion {
+public class DAOAreasVerdes {
     
-    public static ArrayList<Poblacion> loadJSON(String dir) {
-         ArrayList<Poblacion> poblaciones=new ArrayList<>();
+    public static ArrayList<AreasVerdes> loadJSON(String dir) {
+         ArrayList<AreasVerdes> areasVerdesArray=new ArrayList<>();
         try {
-           String JSON_FILE=dir+"/web/datos/pobla.geojson";
+           String JSON_FILE=dir+"/web/datos/areas.json";
             InputStream fis = new FileInputStream(JSON_FILE);
             //create JsonReader object
             JsonReader jsonReader = Json.createReader(fis);
@@ -34,15 +35,16 @@ public class DAOPoblacion {
             jsonReader.close();
             fis.close();
             for (int i = 0; i < features.size(); i++) {
-                Poblacion poblacion=new Poblacion(features.getJsonObject(i));
-                poblaciones.add(poblacion);
+                AreasVerdes areasVerdes=new AreasVerdes(features.getJsonObject(i));
+                areasVerdesArray.add(areasVerdes);
+              
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(DAOPoblacion.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(DAOPoblacion.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return poblaciones;
+        return areasVerdesArray;
     }
 
 }

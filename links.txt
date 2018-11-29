@@ -1,8 +1,0 @@
-http://ine-chile.maps.arcgis.com/apps/webappviewer/index.html?id=bc3cfbd4feec49699c11e813ae9a629f //poblacion temuco
-http://datos.cedeus.cl/layers/geonode:areas_verdes_prc //areas verdes temuco
-
-https://leafletjs.com/examples/choropleth/
-https://gis.stackexchange.com/questions/229723/how-to-display-properties-of-geojson-in-popup-on-leaflet
-https://www.igismap.com/add-load-geojson-file-point-polyline-polygon-map-leaflet-js/
-https://matthewjamestaylor.com/add-css-to-html
-
