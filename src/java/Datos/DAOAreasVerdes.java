@@ -13,6 +13,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.json.*;
@@ -36,8 +39,9 @@ public class DAOAreasVerdes {
             fis.close();
             for (int i = 0; i < features.size(); i++) {
                 AreasVerdes areasVerdes=new AreasVerdes(features.getJsonObject(i));
-                areasVerdesArray.add(areasVerdes);
-              
+                if(!areasVerdes.getSector().equals("")){
+                    areasVerdesArray.add(areasVerdes);
+                }
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(DAOPoblacion.class.getName()).log(Level.SEVERE, null, ex);
@@ -46,5 +50,4 @@ public class DAOAreasVerdes {
         }
         return areasVerdesArray;
     }
-
 }

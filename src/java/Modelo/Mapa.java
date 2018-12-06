@@ -8,6 +8,9 @@ package Modelo;
 import Datos.DAOAreasVerdes;
 import Datos.DAOPoblacion;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -37,7 +40,26 @@ public class Mapa {
     }
     
     public void intersecion(){
+        
     }
     
-    
-}
+
+       public static ArrayList<String> testP(ArrayList<Poblacion> poblaciones){
+                   List av=new LinkedList<>();
+        for(int i=0;i<poblaciones.size();i++){
+            //System.out.println(i+" "+mapa.getAreasVerdes().get(i).getSector());
+            if(!av.contains(poblaciones.get(i).getDistrito())){
+                av.add(poblaciones.get(i).getDistrito());
+            }
+    }
+        //System.out.println(av);
+        return new ArrayList(av);
+    }
+       public static String randomSector(ArrayList<Poblacion> poblaciones){
+           ArrayList<String> randomList = testP(poblaciones);
+           Random rnd=new Random();
+           int i=rnd.nextInt();
+           return randomList.get(i);
+       }
+}    
+

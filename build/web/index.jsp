@@ -73,9 +73,25 @@
             
             
             var dataAreasVerdes =${datosAreasVerdes};
-            var datalayerAreasVerdes = L.geoJson(dataAreasVerdes, {color: 'green'});
+            var datalayerAreasVerdes = L.geoJson(dataAreasVerdes, {onEachFeature:areaOnEachFeature, color: 'green'});
             datalayerAreasVerdes.addTo(map);
-            
+            function areaOnEachFeature(feature, featureLayer) {
+                featureLayer.on({
+                    mouseover: highlightFeature
+                });
+                var center = turf.center(feature);
+                var point = turf.point(center.geometry.coordinates);
+                points.push(point);
+                if(feature.properties.APELLIDO2==""){
+                    console.log("Valor vacio");
+                }
+                 if(feature.properties.APELLIDO1!=""){
+                    console.log(feature.properties.APELLIDO1.toString());
+                }
+                //feature.properties.CENTER=center.geometry.coordinates;
+                featureLayer.bindPopup(center.geometry.coordinates.toString());
+                
+            }
             function highlightFeature(e) {
                 var layer = e.target;
                 info.update(layer.feature.properties);
@@ -88,6 +104,7 @@
                 this.update();
                 return this._div;
             };
+            
 
 // method that we will use to update the control based on feature properties passed
             info.update = function (props) {
@@ -117,7 +134,16 @@
             };
 
             legend.addTo(map);
-
+            
+            var test1=dataPoblacion[0].geometry.coordinates;
+            var test2=dataPoblacion[1].geometry.coordinates;
+            var poly1=turf.polygon(test1);
+            var poly2=turf.polygon(test2);
+            var intersection = turf.intersect(poly1, poly2);
+            console.log(poly1);
+            console.log(poly2);
+            console.log(intersection);
+            
         </script>
     </body>
 </html>

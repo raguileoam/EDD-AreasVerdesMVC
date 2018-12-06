@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import javax.json.JsonArray;
 import javax.json.JsonObject;
 
 /**
@@ -15,13 +16,22 @@ public class Poblacion {
     private JsonObject features;
     private int personas;
     private double shape_Area;
+    private Object[] coords;
+    private String distrito;
+
 
     public Poblacion(JsonObject jsonObject ) {
     this.features=jsonObject;
     JsonObject properties=features.getJsonObject("properties");
     this.personas = properties.getJsonNumber("PERSONAS").intValue();
     this.shape_Area=properties.getJsonNumber("Shape__Area").doubleValue();
-             
+    distrito=properties.getJsonString("DISTRITO").getString();
+    JsonArray coordsJson = features.getJsonObject("geometry").getJsonArray("coordinates").getJsonArray(0).getJsonArray(0);
+    coords=coordsJson.toArray();        
+    }
+
+    public String getDistrito() {
+        return distrito;
     }
 
     @Override
@@ -37,5 +47,7 @@ public class Poblacion {
         return shape_Area;
     }
     
-    
+        public Object[] getCoords() {
+        return coords;
+    }
 }
