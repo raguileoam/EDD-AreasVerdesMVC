@@ -8,6 +8,7 @@ package Controlador;
 import Datos.DAOAreasVerdes;
 import Datos.DAOPoblacion;
 import Modelo.AreasVerdes;
+import Modelo.Mapa;
 import Modelo.Poblacion;
 import java.io.File;
 import java.io.IOException;
@@ -39,10 +40,9 @@ public class Home extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");   
         String dir="/home/raguileoam/Documentos/5 Semestre/Estructura de datos/Proyecto Semestral/EDD-AreasVerdes";
-        ArrayList<Poblacion> poblacionArray = DAOPoblacion.loadJSON(dir);
-        request.setAttribute("datosPoblacion",poblacionArray);
-        ArrayList<AreasVerdes> areasVerdesArray=DAOAreasVerdes.loadJSON(dir);
-        request.setAttribute("datosAreasVerdes", areasVerdesArray);
+        Mapa mapa=new Mapa(dir);
+        request.setAttribute("datosPoblacion",mapa.getPoblacion());
+        request.setAttribute("datosAreasVerdes", mapa.getAreasVerdes());
         RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
         disp.forward(request, response);
     }

@@ -16,6 +16,7 @@
         <link rel="stylesheet" type="text/css" href="test.css" media="screen" />
         <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
     </head>
     <body>
 
@@ -28,14 +29,21 @@
             }).addTo(map);
 
             var dataPoblacion = ${datosPoblacion};
+            var points = new Array();
             var datalayerPoblacion = L.geoJson(dataPoblacion, {onEachFeature: poblaOnEachFeature, style: style});
             datalayerPoblacion.addTo(map);
+            
+          
             function poblaOnEachFeature(feature, featureLayer) {
                 featureLayer.on({
                     mouseover: highlightFeature
                 });
-                  // featureLayer.bindPopup(dire);
-
+                var center = turf.center(feature);
+                var point = turf.point(center.geometry.coordinates);
+                points.push(point);
+                //feature.properties.CENTER=center.geometry.coordinates;
+                featureLayer.bindPopup(center.geometry.coordinates.toString());
+                
             }
             function style(feature) {
                 return {
@@ -58,11 +66,16 @@
                         d > 2 ? '#FED976' :
                         '#FFEDA0';
             }
-
+            var pointsFC=turf.featureCollection(points);
+            //var voronoiPolygons = turf.voronoi(pointsFC);
+            //var dataLayervoronoi=L.geoJson(voronoiPolygons, {color: 'white'});
+            //dataLayervoronoi.addTo(map);
+            
+            
             var dataAreasVerdes =${datosAreasVerdes};
             var datalayerAreasVerdes = L.geoJson(dataAreasVerdes, {color: 'green'});
             datalayerAreasVerdes.addTo(map);
-
+            
             function highlightFeature(e) {
                 var layer = e.target;
                 info.update(layer.feature.properties);
@@ -104,6 +117,7 @@
             };
 
             legend.addTo(map);
+
         </script>
     </body>
 </html>

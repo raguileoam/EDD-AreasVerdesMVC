@@ -5,20 +5,38 @@
  */
 package Modelo;
 
+import Datos.DAOAreasVerdes;
+import Datos.DAOPoblacion;
+import java.util.ArrayList;
+
 
 /**
  *
  * @author raguileoam
  */
 public class Mapa {
-    private Poblacion poblacion;
-    private AreasVerdes areasVerdes;
+    private  ArrayList<Poblacion> poblacion;
+    private ArrayList<AreasVerdes>  areasVerdes;
     private final Double[] coords={-38.736277, -72.590618};
-    
 
-    public Mapa(Poblacion poblacion, AreasVerdes areasVerdes) {
-        this.poblacion = poblacion;
-        this.areasVerdes = areasVerdes;
+    public Mapa(String dir) {
+        this.poblacion=DAOPoblacion.loadJSON(dir);
+        this.areasVerdes=DAOAreasVerdes.loadJSON(dir);
+    }
+
+    public ArrayList<Poblacion> getPoblacion() {
+        return poblacion;
+    }
+
+    public ArrayList<AreasVerdes> getAreasVerdes() {
+        return areasVerdes;
+    }
+
+    public Double[] getCoords() {
+        return coords;
+    }
+    
+    public void intersecion(){
     }
     
     
