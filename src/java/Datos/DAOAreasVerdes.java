@@ -6,15 +6,11 @@
 package Datos;
 
 import Modelo.AreasVerdes;
-import Modelo.Poblacion;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,7 +21,7 @@ import javax.json.*;
  * @author raguileoam
  */
 public class DAOAreasVerdes {
-    
+    static String[] p_distritors={"TROMÉN","RALUNCOYÁN","SAN CARLOS","PUEBLO NUEVO","ESTERO COIHUECO","JAVIERA CARRERA","SANTA ROSA","CENTRO","ESTADIO MUNICIPAL","SANTA ELENA","CAUPOLICAN","LABRANZA","LANÍN","AVENIDA ALEMANIA","ÑIELOL"};
     public static ArrayList<AreasVerdes> loadJSON(String dir) {
          ArrayList<AreasVerdes> areasVerdesArray=new ArrayList<>();
         try {
@@ -40,6 +36,7 @@ public class DAOAreasVerdes {
             for (int i = 0; i < features.size(); i++) {
                 AreasVerdes areasVerdes=new AreasVerdes(features.getJsonObject(i));
                 if(!areasVerdes.getSector().equals("")){
+                    areasVerdes.setSector(p_distritors[new Random().nextInt(p_distritors.length)]);
                     areasVerdesArray.add(areasVerdes);
                 }
             }

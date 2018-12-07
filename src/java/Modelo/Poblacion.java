@@ -47,7 +47,7 @@ public class Poblacion {
         return shape_Area;
     }
     
-        public Object[] getCoords() {
+    public Object[] getCoords() {
         return coords;
     }
 }

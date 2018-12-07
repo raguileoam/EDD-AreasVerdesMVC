@@ -5,12 +5,12 @@
  */
 package DatosTest;
 
-import Datos.DAOPoblacion;
 import Modelo.Mapa;
-import Modelo.Poblacion;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -39,15 +39,27 @@ public class DAOPoblacionTest {
     }
         //System.out.println(av);
     }
-        @Test
+    @Test
     public void testP(){
         for(int i=0;i<mapa.getPoblacion().size();i++){
-            System.out.println(i+" "+mapa.getPoblacion().get(i).getDistrito());
+            //System.out.println(i+" "+mapa.getPoblacion().get(i).getDistrito());
             if(!p.contains(mapa.getPoblacion().get(i).getDistrito())){
                 p.add(mapa.getPoblacion().get(i).getDistrito());
             }
     }
-        System.out.println(p);
+        //System.out.println(p);
+    }
+    @Test
+    public void testI(){
+      HashMap<String, Double[]> hmap = mapa.interseccion();
+      Set set = hmap.entrySet();
+      Iterator iterator = set.iterator();
+      while(iterator.hasNext()) {
+         Map.Entry mentry = (Map.Entry)iterator.next();
+         System.out.print("key is: "+ mentry.getKey() + " & Value is: ");
+         Double[] values = (Double[])mentry.getValue();
+         System.out.println("AV: "+values[0]+" Habitantes: "+ values[1]+ " AV/Hab: "+(values[0]/values[1]));
+      }
     }
     
     
