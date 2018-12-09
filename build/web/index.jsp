@@ -28,21 +28,22 @@
                 attribution: '&copy; <a href=”http://osm.org/copyright”>OpenStreetMap</a> contributors'
             }).addTo(map);
 
-            var dataPoblacion = ${datosPoblacion};
             var points = new Array();
-            var datalayerPoblacion = L.geoJson(dataPoblacion, {onEachFeature: poblaOnEachFeature, style: style});
+            var datalayerPoblacion = L.geoJson(${datosPoblacion}, {onEachFeature: poblaOnEachFeature, style: style});
             datalayerPoblacion.addTo(map);
-            
           
             function poblaOnEachFeature(feature, featureLayer) {
                 featureLayer.on({
                     mouseover: highlightFeature
                 });
                 var center = turf.center(feature);
-                var point = turf.point(center.geometry.coordinates);
-                points.push(point);
-                //feature.properties.CENTER=center.geometry.coordinates;
-                featureLayer.bindPopup(center.geometry.coordinates.toString());
+                
+                //center.geometry.coordinates.toString()
+                var distrito=feature.properties.DISTRITO;
+                var av=${interseccion.get(distrito)[0]}
+                var pobla=${interseccion.get("ÑIELOL")[1]}
+                var proporcion=av/pobla;
+                featureLayer.bindPopup(proporcion.toString());
                 
             }
             function style(feature) {
@@ -65,33 +66,11 @@
                         d > 5 ? '#FEB24C' :
                         d > 2 ? '#FED976' :
                         '#FFEDA0';
-            }
-            var pointsFC=turf.featureCollection(points);
-            //var voronoiPolygons = turf.voronoi(pointsFC);
-            //var dataLayervoronoi=L.geoJson(voronoiPolygons, {color: 'white'});
-            //dataLayervoronoi.addTo(map);
+            }            
             
-            
-            var dataAreasVerdes =${datosAreasVerdes};
-            var datalayerAreasVerdes = L.geoJson(dataAreasVerdes, {onEachFeature:areaOnEachFeature, color: 'green'});
+            var datalayerAreasVerdes = L.geoJson(${datosAreasVerdes}, {color: 'green'});
             datalayerAreasVerdes.addTo(map);
-            function areaOnEachFeature(feature, featureLayer) {
-                featureLayer.on({
-                    mouseover: highlightFeature
-                });
-                var center = turf.center(feature);
-                var point = turf.point(center.geometry.coordinates);
-                points.push(point);
-                if(feature.properties.APELLIDO2 == ""){
-                    console.log("Valor vacio");
-                }
-                 if(feature.properties.APELLIDO1 != ""){
-                    console.log(feature.properties.APELLIDO1.toString());
-                }
-                //feature.properties.CENTER=center.geometry.coordinates;
-                featureLayer.bindPopup(center.geometry.coordinates.toString());
-                
-            }
+           
             function highlightFeature(e) {
                 var layer = e.target;
                 info.update(layer.feature.properties);
@@ -126,14 +105,6 @@
             };
             legend.addTo(map);
             
-            var test1=dataPoblacion[0].geometry.coordinates;
-            var test2=dataPoblacion[1].geometry.coordinates;
-            var poly1=turf.polygon(test1);
-            var poly2=turf.polygon(test2);
-            var intersection = turf.intersect(poly1, poly2);
-            console.log(poly1);
-            console.log(poly2);
-            console.log(intersection);
             
         </script>
     </body>

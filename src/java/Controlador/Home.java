@@ -41,11 +41,11 @@ public class Home extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");   
         String dir="/home/raguileoam/Documentos/5 Semestre/Estructura de datos/Proyecto Semestral/EDD-AreasVerdes";
         Mapa mapa=new Mapa(dir);
-        request.setAttribute("datosPoblacion",mapa.getPoblacion());
+        request.setAttribute("datosPoblacion",mapa.getPoblaciones());
         request.setAttribute("datosAreasVerdes", mapa.getAreasVerdes());
-        //request.setAttribute("datosPoblacion",mapa.getPoblacion());
-        //request.setAttribute("datosAreasVerdes", mapa.getAreasVerdes());
+        request.setAttribute("interseccion", mapa.getInterseccion());
 
+        
         RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
         disp.forward(request, response);
     }

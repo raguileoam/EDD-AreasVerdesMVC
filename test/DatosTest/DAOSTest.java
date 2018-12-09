@@ -18,7 +18,7 @@ import org.junit.Test;
  *
  * @author raguileoam
  */
-public class DAOPoblacionTest {
+public class DAOSTest {
     Mapa mapa;
      LinkedList<String> av;
      LinkedList<String> p;
@@ -41,10 +41,10 @@ public class DAOPoblacionTest {
     }
     @Test
     public void testP(){
-        for(int i=0;i<mapa.getPoblacion().size();i++){
+        for(int i=0;i<mapa.getPoblaciones().size();i++){
             //System.out.println(i+" "+mapa.getPoblacion().get(i).getDistrito());
-            if(!p.contains(mapa.getPoblacion().get(i).getDistrito())){
-                p.add(mapa.getPoblacion().get(i).getDistrito());
+            if(!p.contains(mapa.getPoblaciones().get(i).getDistrito())){
+                p.add(mapa.getPoblaciones().get(i).getDistrito());
             }
     }
         //System.out.println(p);
