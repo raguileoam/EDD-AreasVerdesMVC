@@ -5,17 +5,10 @@
  */
 package Controlador;
 
-import Datos.DAOAreasVerdes;
-import Datos.DAOPoblacion;
-import Modelo.AreasVerdes;
 import Modelo.Mapa;
-import Modelo.Poblacion;
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author raguileoam
  */
-//@WebServlet(name = "Home", urlPatterns = {"/"})
 public class Home extends HttpServlet {
 
     /**
@@ -39,13 +31,12 @@ public class Home extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");   
-        //String dir="/home/raguileoam/Documentos/5 Semestre/Estructura de datos/Proyecto Semestral/EDD-AreasVerdes";
-        String dir="/usr/local/glassfish4/testEDD-AreasVerdes-master";
+        //String dir="/datos/";
+        String dir="/home/raguileoam/Documentos/5 Semestre/Estructura de datos/Proyecto Semestral/AreasVerdesMVC/datos/";
         Mapa mapa=new Mapa(dir);
         request.setAttribute("datosPoblacion",mapa.getPoblaciones());
         request.setAttribute("datosAreasVerdes", mapa.getAreasVerdes());
         request.setAttribute("interseccion", mapa.getInterseccion());
-
         
         RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
         disp.forward(request, response);

@@ -6,6 +6,7 @@
 package Datos;
 
 import Modelo.Poblacion;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -28,8 +29,9 @@ public class DAOPoblacion {
     public static ArrayList<Poblacion> loadJSON(String dir) {
          ArrayList<Poblacion> poblaciones=new ArrayList<>();
         try {
-           String JSON_FILE=dir+"/web/datos/pobla.geojson";
-            InputStream fis = new FileInputStream(JSON_FILE);
+           String JSON_FILE=dir+"pobla.geojson";
+           File file=new File(JSON_FILE);
+            InputStream fis = new FileInputStream(file.getAbsolutePath());
             //create JsonReader object
             JsonReader jsonReader = Json.createReader(fis);
             JsonArray features=jsonReader.readObject().getJsonArray("features");

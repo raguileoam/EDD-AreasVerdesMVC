@@ -6,6 +6,7 @@
 package Datos;
 
 import Modelo.AreasVerdes;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -25,8 +26,9 @@ public class DAOAreasVerdes {
     public static ArrayList<AreasVerdes> loadJSON(String dir) {
          ArrayList<AreasVerdes> areasVerdesArray=new ArrayList<>();
         try {
-           String JSON_FILE=dir+"/web/datos/areas.json";
-            InputStream fis = new FileInputStream(JSON_FILE);
+           String JSON_FILE=dir+"areas.json";
+             File file=new File(JSON_FILE);
+            InputStream fis = new FileInputStream(file.getAbsolutePath());
             //create JsonReader object
             JsonReader jsonReader = Json.createReader(fis);
             JsonArray features=jsonReader.readObject().getJsonArray("features");

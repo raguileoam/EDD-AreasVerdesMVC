@@ -26,7 +26,7 @@ public class DAOSTest {
     public void setup(){
         av=new LinkedList<>();
         p=new LinkedList<>();
-        String dir="/home/raguileoam/Documentos/5 Semestre/Estructura de datos/Proyecto Semestral/EDD-AreasVerdes";
+        String dir="/home/raguileoam/Documentos/5 Semestre/Estructura de datos/Proyecto Semestral/EDD-AreasVerdes/web/datos/";
         mapa=new Mapa(dir);
     }
     @Test
