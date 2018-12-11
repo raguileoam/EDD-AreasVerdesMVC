@@ -40,7 +40,7 @@
                 
                 //center.geometry.coordinates.toString()
                 var distrito=feature.properties.DISTRITO;
-                var av=${interseccion.get(distrito)[0]}
+                var av=${interseccion.get("ÑIELOL")[0]}
                 var pobla=${interseccion.get("ÑIELOL")[1]}
                 var proporcion=av/pobla;
                 featureLayer.bindPopup(proporcion.toString());
