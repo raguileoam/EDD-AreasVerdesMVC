@@ -39,7 +39,8 @@ public class Home extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");   
-        String dir="/home/raguileoam/Documentos/5 Semestre/Estructura de datos/Proyecto Semestral/EDD-AreasVerdes";
+        //String dir="/home/raguileoam/Documentos/5 Semestre/Estructura de datos/Proyecto Semestral/EDD-AreasVerdes";
+        String dir="/usr/local/glassfish4/testEDD-AreasVerdes-master";
         Mapa mapa=new Mapa(dir);
         request.setAttribute("datosPoblacion",mapa.getPoblaciones());
         request.setAttribute("datosAreasVerdes", mapa.getAreasVerdes());
