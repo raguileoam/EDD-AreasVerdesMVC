@@ -15,26 +15,24 @@ import java.util.List;
  * @author raguileoam
  */
 public class Mapa {
+
     private List<Poblacion> poblaciones;
-    private List<AreasVerdes>  areasVerdes;
-    private HashMap<String, Double[]> interseccion;
-    private final Double[] coords={-38.736277, -72.590618};
+    private List<AreasVerdes> areasVerdes;
+    private HashMap<String, Double> interseccionAV;
+    private HashMap<String, Double> interseccionP;
+
+    static final Double[] coords = {-38.736277, -72.590618};
 
     public Mapa(String dir) {
-        this.poblaciones=DAOPoblacion.loadJSON(dir);
-        this.areasVerdes=DAOAreasVerdes.loadJSON(dir);
-        interseccion=interseccion();
+        this.poblaciones = DAOPoblacion.loadJSON(dir);
+        this.areasVerdes = DAOAreasVerdes.loadJSON(dir);
+        interseccionAV = interseccionAV();
+        interseccionP = interseccionP();
     }
 
     public List<Poblacion> getPoblaciones() {
         return poblaciones;
     }
-
-    public HashMap<String, Double[]> getInterseccion() {
-        return interseccion;
-    }
-    
-
 
     public List<AreasVerdes> getAreasVerdes() {
         return areasVerdes;
@@ -43,30 +41,48 @@ public class Mapa {
     public Double[] getCoords() {
         return coords;
     }
-    
-    /**
-     * Determina área total de areas verdes y poblacion total en un sector determinado. 
-     * @return Hashmap con sector como clave y un array que contiene el area total de areas verdes 
-     * y la poblacion total en un sector. 
-     */
-    public HashMap<String, Double[]> interseccion(){
-        HashMap<String, Double[]> hmap = new HashMap<>();
-        for(Poblacion poblacion:poblaciones){
-            for(AreasVerdes areaVerde:areasVerdes){
-                if(poblacion.getDistrito().equals(areaVerde.getSector())){
-                    String sector=poblacion.getDistrito();
-                    double numHabitantes=poblacion.getPersonas();
-                    double numAreasVerdes=areaVerde.getArea();
-                    if(hmap.containsKey(sector)){
-                        numAreasVerdes+=hmap.get(sector)[0];
-                        numHabitantes+=hmap.get(sector)[1];
-                    }
-                    Double[] values={numAreasVerdes,numHabitantes};
-                    hmap.put(sector, values);
-                }
-            }
-        }
-        return hmap;
-    } 
-}    
 
+    /**
+     * Determina área total de areas verdes y poblacion total en un sector
+     * determinado.
+     *
+     * @return Hashmap con sector como clave y un array que contiene el area
+     * total de areas verdes y la poblacion total en un sector.
+     */
+    public HashMap<String, Double> interseccionP() {
+        HashMap<String, Double> hmapP = new HashMap<>();
+        for (Poblacion poblacion : poblaciones) {
+            String sector = poblacion.getMacroSector();
+            double numHabitantes = poblacion.getPersonas();
+            if (hmapP.containsKey(sector)) {
+                numHabitantes += hmapP.get(sector);
+            }
+            hmapP.put(sector, numHabitantes);
+        }
+        return hmapP;
+    }
+
+    /**
+     * Determina área total de areas verdes y poblacion total en un sector
+     * determinado.
+     *
+     * @return Hashmap con sector como clave y un array que contiene el area
+     * total de areas verdes y la poblacion total en un sector.
+     */
+    public HashMap<String, Double> interseccionAV() {
+        HashMap<String, Double> hmapAV = new HashMap<>();
+        for (AreasVerdes areaVerde : areasVerdes) {
+            String sector = areaVerde.getMacroSector();
+            double numAreasVerdes = areaVerde.getArea();
+            if(hmapAV.containsKey("Costanera Cautín")) System.out.println(numAreasVerdes);
+
+            if (hmapAV.containsKey(sector)) {
+                numAreasVerdes += hmapAV.get(sector);
+            }
+            hmapAV.put(sector, numAreasVerdes);
+        }
+
+        return hmapAV;
+    }
+
+}

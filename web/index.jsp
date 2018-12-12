@@ -4,6 +4,7 @@
     Author     : raguileoam
 --%>
 
+<%@page import="java.util.Enumeration"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,7 +16,7 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" type="text/css">
         <link rel="stylesheet" type="text/css" href="test.css" media="screen" />
-        
+
         <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>        
         <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
@@ -25,31 +26,24 @@
     </head>
     <body>
 
-        <h1>Test MVC Areas Verdes</h1>
+        <h1>Areas Verdes</h1>
         <div id="map"></div>
         <script>
             var map = L.map('map').setView([-38.736277, -72.590618], 13);
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href=”http://osm.org/copyright”>OpenStreetMap</a> contributors'
             }).addTo(map);
-
-            var points = new Array();
-            var datalayerPoblacion = L.geoJson(${datosPoblacion}, {onEachFeature: poblaOnEachFeature, style: style});
+            var dataPoblacion =${datosPoblacion};
+            var datalayerPoblacion = L.geoJson(dataPoblacion, {onEachFeature: poblaOnEachFeature, style: style});
             datalayerPoblacion.addTo(map);
-          
+
             function poblaOnEachFeature(feature, featureLayer) {
                 featureLayer.on({
                     mouseover: highlightFeature
                 });
-                var center = turf.center(feature);
-                
-                //center.geometry.coordinates.toString()
-                var distrito=feature.properties.DISTRITO;
-                var av=${interseccion.get("ÑIELOL")[0]}
-                var pobla=${interseccion.get("ÑIELOL")[1]}
-                var proporcion=av/pobla;
-                featureLayer.bindPopup(proporcion.toString());
-                
+                var area = turf.area(feature.geometry);
+                featureLayer.bindPopup("Poblacion: turf " + area.toString() + " json" + feature.properties.Shape__Area);
+
             }
             function style(feature) {
                 return {
@@ -71,11 +65,16 @@
                         d > 5 ? '#FEB24C' :
                         d > 2 ? '#FED976' :
                         '#FFEDA0';
-            }            
-            
-            var datalayerAreasVerdes = L.geoJson(${datosAreasVerdes}, {color: 'green'});
+            }
+            var dataAreasVerdes =${datosAreasVerdes};
+            var datalayerAreasVerdes = L.geoJson(dataAreasVerdes, {onEachFeature: avOnEachFeature, color: 'green'});
             datalayerAreasVerdes.addTo(map);
-           
+            function avOnEachFeature(feature, featureLayer) {
+                var area = turf.area(feature.geometry);
+                featureLayer.bindPopup("Area Verde: " + feature.properties.DISTRITO + " turf " + area.toString() + " json" + feature.properties.AREA);
+
+            }
+
             function highlightFeature(e) {
                 var layer = e.target;
                 info.update(layer.feature.properties);
@@ -90,7 +89,7 @@
 // method that we will use to update the control based on feature properties passed
             info.update = function (props) {
                 this._div.innerHTML = '<h4>Poblacion por m² respecto a areas verdes</h4>' + (props ?
-                        '<b>' + props.DISTRITO + '</b><br />' + props.PERSONAS + ' personas / mi<sup>2</sup>'
+                        '<b>' + props.DISTRITO +''+ '</b> en '+props.MACRO_SECTOR +'<br />' + props.PERSONAS + ' personas / mi<sup>2</sup>'
                         : 'Elija un lugar');
             };
             info.addTo(map);
@@ -109,8 +108,8 @@
                 return div;
             };
             legend.addTo(map);
-            
-            
+
+
         </script>
     </body>
 </html>

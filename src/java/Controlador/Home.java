@@ -36,8 +36,6 @@ public class Home extends HttpServlet {
         Mapa mapa=new Mapa(dir);
         request.setAttribute("datosPoblacion",mapa.getPoblaciones());
         request.setAttribute("datosAreasVerdes", mapa.getAreasVerdes());
-        request.setAttribute("interseccion", mapa.getInterseccion());
-        
         RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
         disp.forward(request, response);
     }

@@ -26,7 +26,7 @@ public class DAOSTest {
     public void setup(){
         av=new LinkedList<>();
         p=new LinkedList<>();
-        String dir="/home/raguileoam/Documentos/5 Semestre/Estructura de datos/Proyecto Semestral/EDD-AreasVerdes/web/datos/";
+        String dir="/home/raguileoam/Documentos/5 Semestre/Estructura de datos/Proyecto Semestral/AreasVerdesMVC/datos/";
         mapa=new Mapa(dir);
     }
     @Test
@@ -51,14 +51,20 @@ public class DAOSTest {
     }
     @Test
     public void testI(){
-      HashMap<String, Double[]> hmap = mapa.interseccion();
-      Set set = hmap.entrySet();
-      Iterator iterator = set.iterator();
-      while(iterator.hasNext()) {
-         Map.Entry mentry = (Map.Entry)iterator.next();
-         System.out.print("key is: "+ mentry.getKey() + " & Value is: ");
-         Double[] values = (Double[])mentry.getValue();
-         System.out.println("AV: "+values[0]+" Habitantes: "+ values[1]+ " AV/Hab: "+(values[0]/values[1]));
+      HashMap<String, Double> hmapAV = mapa.interseccionAV();
+      HashMap<String, Double> hmapP = mapa.interseccionP();
+      Iterator iteratorAV = hmapAV.entrySet().iterator();
+      Iterator iteratorP = hmapP.entrySet().iterator();
+
+      while(iteratorAV.hasNext()) {
+         Map.Entry mentryAV = (Map.Entry)iteratorAV.next();
+         Map.Entry mentryP = (Map.Entry)iteratorP.next();
+
+         System.out.print("key is: "+ mentryAV.getKey() + " & Value is: ");
+         Double valuesAV = (Double)mentryAV.getValue();
+         Double valuesP = (Double)mentryP.getValue();
+
+         System.out.println("AV: "+valuesAV+" Habitantes: "+ valuesP+ " AV/Hab: "+(valuesAV/valuesP));
       }
     }
     

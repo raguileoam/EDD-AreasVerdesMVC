@@ -19,7 +19,7 @@ import org.junit.Before;
  */
 public class PoblacionTest {
     Poblacion poblacionTest;
-    @Before
+    @Before 
     public void setup(){
         InputStream in = new StringInputStream("");
         poblacionTest=new Poblacion(Json.createReader(in).readObject());

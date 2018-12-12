@@ -38,7 +38,7 @@ public class DAOAreasVerdes {
             for (int i = 0; i < features.size(); i++) {
                 AreasVerdes areasVerdes=new AreasVerdes(features.getJsonObject(i));
                 if(!areasVerdes.getSector().equals("")){
-                    areasVerdes.setSector(p_distritors[new Random().nextInt(p_distritors.length)]);
+                    //areasVerdes.setSector(p_distritors[new Random().nextInt(p_distritors.length)]);
                     areasVerdesArray.add(areasVerdes);
                 }
             }
