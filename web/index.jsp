@@ -4,7 +4,6 @@
     Author     : raguileoam
 --%>
 
-<%@page import="java.util.Enumeration"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,12 +16,16 @@
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" type="text/css">
         <link rel="stylesheet" type="text/css" href="test.css" media="screen" />
 
-        <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>        
         <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
-        <script src="https://rawgit.com/dwilhelm89/LeafletSlider/master/SliderControl.js" type="text/javascript"></script>
+        
+   
+ <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+ <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
+        
+        
+        <script src="lib/SliderControl.js" type="text/javascript"></script>
     </head>
     <body>
 
@@ -35,7 +38,8 @@
             }).addTo(map);
             var dataPoblacion =${datosPoblacion};
             var datalayerPoblacion = L.geoJson(dataPoblacion, {onEachFeature: poblaOnEachFeature, style: style});
-            datalayerPoblacion.addTo(map);
+            //datalayerPoblacion.addTo(map);
+
 
             function poblaOnEachFeature(feature, featureLayer) {
                 featureLayer.on({
@@ -43,11 +47,14 @@
                 });
                 var area = turf.area(feature.geometry);
                 featureLayer.bindPopup("Poblacion: turf " + area.toString() + " json" + feature.properties.Shape__Area);
+                //
+
 
             }
             function style(feature) {
                 return {
-                    fillColor: getColor(10000 * feature.properties.PERSONAS / feature.properties.Shape__Area),
+                    //fillColor: getColor(10000 * feature.properties.PERSONAS / feature.properties.Shape__Area),
+                    fillColor: getColor(feature.properties.AV_HABITANTE),
                     weight: 2,
                     opacity: 1,
                     color: 'white',
@@ -57,13 +64,12 @@
             }
 
             function getColor(d) {
-                return d > 200 ? '#800026' :
-                        d > 100 ? '#BD0026' :
-                        d > 50 ? '#E31A1C' :
-                        d > 20 ? '#FC4E2A' :
-                        d > 10 ? '#FD8D3C' :
-                        d > 5 ? '#FEB24C' :
-                        d > 2 ? '#FED976' :
+                return d < 3 ? '#800026' :
+                        d < 5 ? '#BD0026' :
+                        d < 7 ? '#E31A1C' :
+                        d < 9 ? '#FD8D3C' :
+                        d < 13 ? '#FEB24C' :
+                        d < 15 ? '#FED976' :
                         '#FFEDA0';
             }
             var dataAreasVerdes =${datosAreasVerdes};
@@ -80,7 +86,7 @@
                 info.update(layer.feature.properties);
             }
 
-            var info = L.control();
+            var info = L.control({position:'topright'});
             info.onAdd = function (map) {
                 this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
                 this.update();
@@ -89,7 +95,7 @@
 // method that we will use to update the control based on feature properties passed
             info.update = function (props) {
                 this._div.innerHTML = '<h4>Poblacion por m² respecto a areas verdes</h4>' + (props ?
-                        '<b>' + props.DISTRITO +''+ '</b> en '+props.MACRO_SECTOR +'<br />' + props.PERSONAS + ' personas / mi<sup>2</sup>'
+                        '<b>' + props.DISTRITO + '' + '</b> en ' + props.MACRO_SECTOR + '<br />' + props.PERSONAS + ' personas / mi<sup>2</sup>'
                         : 'Elija un lugar');
             };
             info.addTo(map);
@@ -97,18 +103,22 @@
             var legend = L.control({position: 'bottomright'});
             legend.onAdd = function (map) {
                 var div = L.DomUtil.create('div', 'info legend'),
-                        grades = [0, 2, 5, 10, 20, 50, 100, 200],
+                        grades = [4, 5, 7, 9, 13, 15],
                         labels = [];
                 // loop through our density intervals and generate a label with a colored square for each interval
                 for (var i = 0; i < grades.length; i++) {
                     div.innerHTML +=
                             '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-                            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+                            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + ' m²/habitante' + '<br>' : '+');
                 }
                 return div;
             };
             legend.addTo(map);
 
+            var sliderControl = L.control.sliderControl({position: 'bottomright',layer:datalayerPoblacion,showAllOnStart: true,range:true,attribute:'MACRO_SECTOR'});
+             map.addControl(sliderControl);
+             sliderControl.startSlider();
+            
 
         </script>
     </body>
