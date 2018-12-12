@@ -115,7 +115,14 @@
             };
             legend.addTo(map);
 
-            var sliderControl = L.control.sliderControl({position: 'bottomright',layer:datalayerPoblacion,showAllOnStart: true,range:true,attribute:'MACRO_SECTOR'});
+            var sliderControl = L.control.sliderControl({
+                position: 'bottomright',
+                layer:datalayerPoblacion,
+                showAllOnStart: true,
+                range:true,
+                attribute:'MACRO_SECTOR',
+                orientation:'vertical'
+            });
              map.addControl(sliderControl);
              sliderControl.startSlider();
             

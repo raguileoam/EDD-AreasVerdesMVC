@@ -14,6 +14,7 @@ L.Control.SliderControl = L.Control.extend({
         follow: false,
         sameDate: false,
         alwaysShowDate : true,
+        orientation:'horizontal',
         rezoom: null
     },
 
@@ -51,7 +52,7 @@ L.Control.SliderControl = L.Control.extend({
 
         // Create a control sliderContainer with a jquery ui slider
         var sliderContainer = L.DomUtil.create('div', 'slider', this._container);
-        $(sliderContainer).append('<div id="leaflet-slider" style="width:200px"><div class="ui-slider-handle"></div><div id="slider-timestamp" style="width:200px; margin-top:-30px; background-color:#FFFFFF; text-align:center; border-radius:5px;"></div></div>');
+        $(sliderContainer).append('<div id="leaflet-slider" style="width:15px;height:90px"><div class="ui-slider-handle"></div><div id="slider-timestamp" style="width:15px; height:90px; margin-top:30px; background-color:#FFFFFF; text-align:center; border-radius:5px;></div></div>');
         //Prevent map panning/zooming while using the slider
         $(sliderContainer).mousedown(function () {
             map.dragging.disable();
@@ -110,6 +111,7 @@ L.Control.SliderControl = L.Control.extend({
             min: _options.minValue,
             max: _options.maxValue,
             sameDate: _options.sameDate,
+            orientation: _options.orientation,
             step: 1,
             slide: function (e, ui) {
                 var map = _options.map;
