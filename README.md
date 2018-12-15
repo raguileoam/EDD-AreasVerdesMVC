@@ -1,38 +1,42 @@
 # Areas Verdes
-### Descripción del proyecto
++ Asignatura : Estructuras de Datos
++ Nombre : 
 
-+ Asignatura: Estructura de Datos
-+ Nombre:
-+ Problema que se intentó resolver:
-+ Datos utilizados y las Características de estos:
+Visualizar la desigualdad de áreas verdes por persona en Temuco.
 
+## Como usar este proyecto
+1. Descargar el proyecto como ZIP 
+![](https://i.imgur.com/7g0QZNs.png)
 
+2. Importar el proyecto como ZIP en NetBeans
+![](https://i.imgur.com/HfA1XpY.png)
 
-### Instrucciones para reproducir proyecto:
+3. Una vez importado cambiar String dir de processRequest de clase Home según donde instaló la carpeta.
+![](https://i.imgur.com/0N2IAWa.png)
 
-1. Cambiar String dir de processRequest de clase Home según donde instaló la carpeta.
-2. Ejecutar en Netbeans o instalar GlassFish y ejecutar un deploy con archivo .WAR
+4. Correr el proyecto en NetBeans
+![](https://i.imgur.com/V88qiKC.png)
 
-
-
-#### Dependencias:
+## Dependencias
 
 + **Java**: 
-  + Json Simple(https://code.google.com/archive/p/json-simple/)
+  + [Json Simple](https://code.google.com/archive/p/json-simple/)
   + JUnit
 
 
 
 + **JavaScript**:
 
-  + Leaflet(https://leafletjs.com/)
+  + [Leaflet](https://leafletjs.com/)
 
-  + Turf(https://github.com/Turfjs/turf)
+  + [Turf](https://github.com/Turfjs/turf)
 
-  + LeafletSlider (https://github.com/dwilhelm89/LeafletSlider) modificado
+  + [LeafletSlider](https://github.com/dwilhelm89/LeafletSlider) modificado
 
   + JQuery
 
   + JQueryUI
+  
+## Datos utilizados
 
-
+## Problemas
