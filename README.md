@@ -4,6 +4,12 @@
 
 Visualizar la desigualdad de áreas verdes por persona en Temuco.
 
+# Contenidos
+   * [Importar este proyecto](#como-usar-este-proyecto)
+   * [Dependencias](#dependencias)
+   * [Datos utilizados](#datos-utilizados)
+   * [Problemas](#problemas)
+
 ## Como usar este proyecto
 1. Descargar el proyecto como ZIP 
 ![](https://i.imgur.com/7g0QZNs.png)
