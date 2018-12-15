@@ -2,13 +2,15 @@
 + Asignatura : Estructuras de Datos
 + Nombre : 
 
-Visualizar la desigualdad de áreas verdes por persona en Temuco.
-
 # Contenidos
+   * [Descripción del proyecto](#resumen)
    * [Importar este proyecto](#como-usar-este-proyecto)
    * [Dependencias](#dependencias)
    * [Datos utilizados](#datos-utilizados)
    * [Problemas](#problemas)
+   
+## Resumen
+Visualizar la desigualdad de áreas verdes por persona en Temuco.
 
 ## Como usar este proyecto
 1. Descargar el proyecto como ZIP 
