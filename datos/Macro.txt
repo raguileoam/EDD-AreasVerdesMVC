@@ -16,3 +16,5 @@ map.put("Costanera Cautín",6.83);
 map.put("El Carmen",6.83);
 map.put("Pedro de Valdivia",4.98);
 map.put("Labranza",7.75);
+
+

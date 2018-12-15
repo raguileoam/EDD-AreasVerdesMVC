@@ -12,7 +12,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.json.*;
@@ -26,7 +25,7 @@ public class DAOAreasVerdes {
     public static ArrayList<AreasVerdes> loadJSON(String dir) {
          ArrayList<AreasVerdes> areasVerdesArray=new ArrayList<>();
         try {
-           String JSON_FILE=dir+"areas.json";
+           String JSON_FILE=dir+"areas (original).json";
              File file=new File(JSON_FILE);
             InputStream fis = new FileInputStream(file.getAbsolutePath());
             //create JsonReader object

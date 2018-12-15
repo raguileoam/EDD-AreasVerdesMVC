@@ -58,4 +58,39 @@ public class JSONObjectTest {
             ex.printStackTrace();
         } 
     }
+     @Test
+    public void testP() {
+        try {
+            String dir="/home/raguileoam/Documentos/5 Semestre/Estructura de datos/Proyecto Semestral/AreasVerdesMVC/datos/";
+            ArrayList<Poblacion> poblacion=DAOPoblacion.loadJSON(dir);
+            JSONObject jSONObject=new JSONObject();
+            jSONObject.put("type", "FeatureCollection");
+            jSONObject.put("features", poblacion);
+            
+            BufferedWriter bufferedWriter = null;
+        try {
+            File myFile = new File("/home/raguileoam/p.json");
+            // check if file exist, otherwise create the file before writing
+            if (!myFile.exists()) {
+                myFile.createNewFile();
+            }
+            Writer writer = new FileWriter(myFile);
+            bufferedWriter = new BufferedWriter(writer);
+            bufferedWriter.write(jSONObject.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally{
+            try{
+                if(bufferedWriter != null) bufferedWriter.close();
+            } catch(Exception ex){
+                 
+            }
+        }
+
+            
+     
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } 
+    }
 }

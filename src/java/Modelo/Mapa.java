@@ -7,6 +7,7 @@ package Modelo;
 
 import Datos.DAOAreasVerdes;
 import Datos.DAOPoblacion;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,13 +17,14 @@ import java.util.List;
  */
 public class Mapa {
 
-    private List<Poblacion> poblaciones;
     private List<AreasVerdes> areasVerdes;
     private HashMap<String, Double> interseccionAV;
     private HashMap<String, Double> interseccionP;
 
     static final Double[] coords = {-38.736277, -72.590618};
-
+    //private HashMap<String, List<Poblacion>> poblaciones;
+    private final ArrayList<Poblacion> poblaciones;
+    
     public Mapa(String dir) {
         this.poblaciones = DAOPoblacion.loadJSON(dir);
         this.areasVerdes = DAOAreasVerdes.loadJSON(dir);
@@ -30,9 +32,11 @@ public class Mapa {
         interseccionP = interseccionP();
     }
 
-    public List<Poblacion> getPoblaciones() {
+    public ArrayList<Poblacion> getPoblaciones() {
         return poblaciones;
     }
+
+   
 
     public List<AreasVerdes> getAreasVerdes() {
         return areasVerdes;

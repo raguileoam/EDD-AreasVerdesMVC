@@ -129,4 +129,8 @@ public class Poblacion {
     public Object[] getCoords() {
         return coords;
     }
+
+    public JSONObject getObj() {
+        return obj;
+    }
 }

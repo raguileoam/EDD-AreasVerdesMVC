@@ -17,14 +17,12 @@
         <link rel="stylesheet" type="text/css" href="test.css" media="screen" />
 
         <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
-        
-   
- <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
- <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
-        
-        
+        <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+        <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
+
+
         <script src="lib/SliderControl.js" type="text/javascript"></script>
     </head>
     <body>
@@ -53,7 +51,6 @@
             }
             function style(feature) {
                 return {
-                    //fillColor: getColor(10000 * feature.properties.PERSONAS / feature.properties.Shape__Area),
                     fillColor: getColor(feature.properties.AV_HABITANTE),
                     weight: 2,
                     opacity: 1,
@@ -74,7 +71,12 @@
             }
             var dataAreasVerdes =${datosAreasVerdes};
             var datalayerAreasVerdes = L.geoJson(dataAreasVerdes, {onEachFeature: avOnEachFeature, color: 'green'});
-            datalayerAreasVerdes.addTo(map);
+            var datalayerAreasVerdes1 = L.geoJson(dataAreasVerdes, {onEachFeature: avOnEachFeature, color: 'red'});
+            var datalayerAreasVerdes2 = L.geoJson(dataAreasVerdes, {onEachFeature: avOnEachFeature, color: 'blue'});
+
+            //datalayerAreasVerdes.addTo(map);
+             var group = L.layerGroup([datalayerAreasVerdes, datalayerPoblacion,datalayerAreasVerdes1,datalayerAreasVerdes2]);
+
             function avOnEachFeature(feature, featureLayer) {
                 var area = turf.area(feature.geometry);
                 featureLayer.bindPopup("Area Verde: " + feature.properties.DISTRITO + " turf " + area.toString() + " json" + feature.properties.AREA);
@@ -86,7 +88,7 @@
                 info.update(layer.feature.properties);
             }
 
-            var info = L.control({position:'topright'});
+            var info = L.control({position: 'topright'});
             info.onAdd = function (map) {
                 this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
                 this.update();
@@ -114,18 +116,17 @@
                 return div;
             };
             legend.addTo(map);
-
+            
             var sliderControl = L.control.sliderControl({
                 position: 'bottomright',
-                layer:datalayerPoblacion,
+                layer: group,
                 showAllOnStart: true,
-                range:true,
-                attribute:'MACRO_SECTOR',
-                orientation:'vertical'
+                attribute: 'MACRO_SECTOR',
+                orientation: 'vertical'
             });
-             map.addControl(sliderControl);
-             sliderControl.startSlider();
-            
+            map.addControl(sliderControl);
+            sliderControl.startSlider();
+
 
         </script>
     </body>
