@@ -39,34 +39,8 @@ public class DAOSTest {
     }
         //System.out.println(av);
     }
-    @Test
-    public void testP(){
-        for(int i=0;i<mapa.getPoblaciones().size();i++){
-            //System.out.println(i+" "+mapa.getPoblacion().get(i).getDistrito());
-            if(!p.contains(mapa.getPoblaciones().get(i).getDistrito())){
-                p.add(mapa.getPoblaciones().get(i).getDistrito());
-            }
-    }
-        //System.out.println(p);
-    }
-    @Test
-    public void testI(){
-      HashMap<String, Double> hmapAV = mapa.interseccionAV();
-      HashMap<String, Double> hmapP = mapa.interseccionP();
-      Iterator iteratorAV = hmapAV.entrySet().iterator();
-      Iterator iteratorP = hmapP.entrySet().iterator();
 
-      while(iteratorAV.hasNext()) {
-         Map.Entry mentryAV = (Map.Entry)iteratorAV.next();
-         Map.Entry mentryP = (Map.Entry)iteratorP.next();
 
-         System.out.print("key is: "+ mentryAV.getKey() + " & Value is: ");
-         Double valuesAV = (Double)mentryAV.getValue();
-         Double valuesP = (Double)mentryP.getValue();
-
-         System.out.println("AV: "+valuesAV+" Habitantes: "+ valuesP+ " AV/Hab: "+(valuesAV/valuesP));
-      }
-    }
     
-    
-}
+    }    
+

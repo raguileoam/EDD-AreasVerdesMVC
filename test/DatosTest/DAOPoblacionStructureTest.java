@@ -29,15 +29,11 @@ public class DAOPoblacionStructureTest {
        in=System.nanoTime();
     }
     
+
     @Test
     public void test(){
-        System.out.println("ArrayList");
-        DAOPoblacion.loadJSON(dir);
-    }
-    @Test
-    public void test2(){
         System.out.println("HashMap");
-        HashMap<String, List<Poblacion>> hashmap = DAOPoblacion.loadJSON2(dir);
+        HashMap<String, List<Poblacion>> hashmap = DAOPoblacion.loadJSON(dir);
         Iterator<List<Poblacion>> iterator = hashmap.values().iterator();
         while (iterator.hasNext()) {
             List<Poblacion> nextElement = iterator.next();

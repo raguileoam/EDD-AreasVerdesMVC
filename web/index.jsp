@@ -35,9 +35,19 @@
                 attribution: '&copy; <a href=”http://osm.org/copyright”>OpenStreetMap</a> contributors'
             }).addTo(map);
             var dataPoblacion =${datosPoblacion};
-            var datalayerPoblacion = L.geoJson(dataPoblacion, {onEachFeature: poblaOnEachFeature, style: style});
+            //"Poniente","Centro","Pueblo Nuevo","Amanecer","Costanera","El Carmen","Pedro de Valdivia","Labranza";
+            //var datalayerPoblacion = L.geoJson(dataPoblacion, {onEachFeature: poblaOnEachFeature, style: style});
             //datalayerPoblacion.addTo(map);
-
+            
+            var poniente=L.geoJson(${datosPoblacionx.get("Poniente")}, {onEachFeature: poblaOnEachFeature, style: style});
+            var centro=L.geoJson(${datosPoblacionx.get("Centro")}, {onEachFeature: poblaOnEachFeature, style: style});
+            var puebloNuevo=L.geoJson(${datosPoblacionx.get("Pueblo Nuevo")}, {onEachFeature: poblaOnEachFeature, style: style});
+            var amanecer=L.geoJson(${datosPoblacionx.get("Amanecer")}, {onEachFeature: poblaOnEachFeature, style: style});
+            var costanera=L.geoJson(${datosPoblacionx.get("Costanera Cautín")}, {onEachFeature: poblaOnEachFeature, style: style});
+            var carmen=L.geoJson(${datosPoblacionx.get("El Carmen")}, {onEachFeature: poblaOnEachFeature, style: style});
+            var valdivia=L.geoJson(${datosPoblacionx.get("Pedro de Valdivia")}, {onEachFeature: poblaOnEachFeature, style: style});
+            var labranza=L.geoJson(${datosPoblacionx.get("Labranza")}, {onEachFeature: poblaOnEachFeature, style: style});
+            var group = L.layerGroup([poniente,centro,puebloNuevo,amanecer,costanera,carmen,valdivia,labranza]);
 
             function poblaOnEachFeature(feature, featureLayer) {
                 featureLayer.on({
@@ -45,9 +55,6 @@
                 });
                 var area = turf.area(feature.geometry);
                 featureLayer.bindPopup("Poblacion: turf " + area.toString() + " json" + feature.properties.Shape__Area);
-                //
-
-
             }
             function style(feature) {
                 return {
@@ -71,15 +78,11 @@
             }
             var dataAreasVerdes =${datosAreasVerdes};
             var datalayerAreasVerdes = L.geoJson(dataAreasVerdes, {onEachFeature: avOnEachFeature, color: 'green'});
-            var datalayerAreasVerdes1 = L.geoJson(dataAreasVerdes, {onEachFeature: avOnEachFeature, color: 'red'});
-            var datalayerAreasVerdes2 = L.geoJson(dataAreasVerdes, {onEachFeature: avOnEachFeature, color: 'blue'});
+            datalayerAreasVerdes.addTo(map);
 
-            //datalayerAreasVerdes.addTo(map);
-             var group = L.layerGroup([datalayerAreasVerdes, datalayerPoblacion,datalayerAreasVerdes1,datalayerAreasVerdes2]);
 
             function avOnEachFeature(feature, featureLayer) {
-                var area = turf.area(feature.geometry);
-                featureLayer.bindPopup("Area Verde: " + feature.properties.DISTRITO + " turf " + area.toString() + " json" + feature.properties.AREA);
+                featureLayer.bindPopup("Area Verde: " + feature.properties.AREA);
 
             }
 
