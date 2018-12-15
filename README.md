@@ -3,6 +3,7 @@
 + Nombre : 
 
 # Contenidos
+
    * [Descripción del proyecto](#resumen)
    * [Importar este proyecto](#como-usar-este-proyecto)
    * [Dependencias](#dependencias)
@@ -10,9 +11,11 @@
    * [Problemas](#problemas)
    
 ## Resumen
+
 Visualizar la desigualdad de áreas verdes por persona en Temuco.
 
 ## Como usar este proyecto
+
 1. Descargar el proyecto como ZIP 
 ![](https://i.imgur.com/7g0QZNs.png)
 
@@ -31,8 +34,6 @@ Visualizar la desigualdad de áreas verdes por persona en Temuco.
   + [Json Simple](https://code.google.com/archive/p/json-simple/)
   + JUnit
 
-
-
 + **JavaScript**:
 
   + [Leaflet](https://leafletjs.com/)
@@ -47,4 +48,12 @@ Visualizar la desigualdad de áreas verdes por persona en Temuco.
   
 ## Datos utilizados
 
+
+
+
+
 ## Problemas
+
+El principal obstáculo del proyecto es que las fuentes de datos de los mapas desaparezcan. Además los datos que se extraen provienen de distintas fuentes lo que dificulta su relación.
+Menores obstáculos serían que las librerías no funcionen como se quería o no se le pueda dar el uso que se necesita.
+
