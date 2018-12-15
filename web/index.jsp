@@ -38,16 +38,16 @@
             //"Poniente","Centro","Pueblo Nuevo","Amanecer","Costanera","El Carmen","Pedro de Valdivia","Labranza";
             //var datalayerPoblacion = L.geoJson(dataPoblacion, {onEachFeature: poblaOnEachFeature, style: style});
             //datalayerPoblacion.addTo(map);
-            
-            var poniente=L.geoJson(${datosPoblacionx.get("Poniente")}, {onEachFeature: poblaOnEachFeature, style: style});
-            var centro=L.geoJson(${datosPoblacionx.get("Centro")}, {onEachFeature: poblaOnEachFeature, style: style});
-            var puebloNuevo=L.geoJson(${datosPoblacionx.get("Pueblo Nuevo")}, {onEachFeature: poblaOnEachFeature, style: style});
-            var amanecer=L.geoJson(${datosPoblacionx.get("Amanecer")}, {onEachFeature: poblaOnEachFeature, style: style});
-            var costanera=L.geoJson(${datosPoblacionx.get("Costanera Cautín")}, {onEachFeature: poblaOnEachFeature, style: style});
-            var carmen=L.geoJson(${datosPoblacionx.get("El Carmen")}, {onEachFeature: poblaOnEachFeature, style: style});
-            var valdivia=L.geoJson(${datosPoblacionx.get("Pedro de Valdivia")}, {onEachFeature: poblaOnEachFeature, style: style});
-            var labranza=L.geoJson(${datosPoblacionx.get("Labranza")}, {onEachFeature: poblaOnEachFeature, style: style});
-            var group = L.layerGroup([poniente,centro,puebloNuevo,amanecer,costanera,carmen,valdivia,labranza]);
+
+            var poniente = L.geoJson(${datosPoblacionx.get("Poniente")}, {onEachFeature: poblaOnEachFeature, style: style});
+            var centro = L.geoJson(${datosPoblacionx.get("Centro")}, {onEachFeature: poblaOnEachFeature, style: style});
+            var puebloNuevo = L.geoJson(${datosPoblacionx.get("Pueblo Nuevo")}, {onEachFeature: poblaOnEachFeature, style: style});
+            var amanecer = L.geoJson(${datosPoblacionx.get("Amanecer")}, {onEachFeature: poblaOnEachFeature, style: style});
+            var costanera = L.geoJson(${datosPoblacionx.get("Costanera Cautín")}, {onEachFeature: poblaOnEachFeature, style: style});
+            var carmen = L.geoJson(${datosPoblacionx.get("El Carmen")}, {onEachFeature: poblaOnEachFeature, style: style});
+            var valdivia = L.geoJson(${datosPoblacionx.get("Pedro de Valdivia")}, {onEachFeature: poblaOnEachFeature, style: style});
+            var labranza = L.geoJson(${datosPoblacionx.get("Labranza")}, {onEachFeature: poblaOnEachFeature, style: style});
+            var group = L.layerGroup([poniente, centro, puebloNuevo, amanecer, costanera, carmen, valdivia, labranza]);
 
             function poblaOnEachFeature(feature, featureLayer) {
                 featureLayer.on({
@@ -119,7 +119,7 @@
                 return div;
             };
             legend.addTo(map);
-            
+
             var sliderControl = L.control.sliderControl({
                 position: 'bottomright',
                 layer: group,

@@ -9,7 +9,7 @@ L.Control.SliderControl = L.Control.extend({
         minValue: 0,
         showAllOnStart: false,
         markers: null,
-        orientation: 'horizontal',
+        orientation: 'horizontal'
     },
 
     initialize: function (options) {
@@ -33,7 +33,7 @@ L.Control.SliderControl = L.Control.extend({
         this.options.map = map;
         // Create a control sliderContainer with a jquery ui slider
         var sliderContainer = L.DomUtil.create('div', 'slider', this._container);
-        $(sliderContainer).append('<div id="leaflet-slider" style="width:15px;height:90px">');
+        $(sliderContainer).append('<div id="leaflet-slider">');
         //Prevent map panning/zooming while using the slider
         $(sliderContainer).mousedown(function () {
             map.dragging.disable();

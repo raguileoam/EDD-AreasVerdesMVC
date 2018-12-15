@@ -39,7 +39,7 @@ public class Home extends HttpServlet {
         String dir="/home/raguileoam/Documentos/5 Semestre/Estructura de datos/Proyecto Semestral/AreasVerdesMVC/datos/";
         Mapa mapa=new Mapa(dir);
         request.setAttribute("datosPoblacion",mapa.getPoblacionesList());
-        request.setAttribute("datosPoblacionx",mapa.getPoblaciones());
+        request.setAttribute("datosPoblacionx",mapa.getPoblaciones ());
         request.setAttribute("datosAreasVerdes", mapa.getAreasVerdes());
         request.setAttribute("macrosectores", Mapa.macrosectores);
         RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
