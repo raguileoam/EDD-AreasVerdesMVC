@@ -73,10 +73,10 @@ L.Control.SliderControl = L.Control.extend({
 
     startSlider: function () {
         _options = this.options;
-        var index_start = _options.minValue;
+        var index_start = _options.maxValue;
         if (_options.showAllOnStart) {
             index_start = _options.maxValue;
-            _options.value = _options.maxValue;
+            _options.value = _options.minValue;
         }
         $("#leaflet-slider").slider({
             value: _options.value,

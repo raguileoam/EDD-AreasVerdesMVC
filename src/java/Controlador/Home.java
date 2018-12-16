@@ -6,11 +6,13 @@
 package Controlador;
 
 import Modelo.Mapa;
+import Modelo.Poblaciones_macroSector;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,10 +40,10 @@ public class Home extends HttpServlet {
         //String dir="/datos/";
         String dir="/home/raguileoam/Documentos/5 Semestre/Estructura de datos/Proyecto Semestral/AreasVerdesMVC/datos/";
         Mapa mapa=new Mapa(dir);
-        request.setAttribute("datosPoblacion",mapa.getPoblacionesList());
-        request.setAttribute("datosPoblacionx",mapa.getPoblaciones ());
+        request.setAttribute("datosPoblacion",mapa.getPoblaciones());
         request.setAttribute("datosAreasVerdes", mapa.getAreasVerdes());
-        request.setAttribute("macrosectores", Mapa.macrosectores);
+        Set<String> macrosectores = Poblaciones_macroSector.configAV_Hab.keySet();
+        request.setAttribute("macrosectores",macrosectores);
         RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
         disp.forward(request, response);
     }

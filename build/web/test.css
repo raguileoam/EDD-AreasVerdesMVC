@@ -12,7 +12,7 @@ height: 80vh;
     border-radius: 5px;
 }
 .info h4 {
-    margin: 0 0 5px;
+    margin: 0 0 0;
     color: #777;
 }
 .legend {
@@ -29,11 +29,11 @@ height: 80vh;
     opacity: 0.7;
 }
 .slider{
-	width:200px;
-	height:100px;
+	width:195px;
+	height:110px;
 	transform: translate(0%,120%);
 }
 #leaflet-slider{
-	height:120px;
+	height:105px;
 }
 

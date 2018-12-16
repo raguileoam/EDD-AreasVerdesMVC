@@ -7,6 +7,7 @@ package Datos;
 
 import Modelo.Mapa;
 import Modelo.Poblacion;
+import Modelo.Poblaciones_macroSector;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -24,10 +25,10 @@ import javax.json.*;
  */
 public class DAOPoblacion {
     
-    public static HashMap<String,List<Poblacion>> loadJSON(String dir) {
-         HashMap<String,List<Poblacion>> poblaciones=new HashMap<>();
-         for(String macrosector:Mapa.macrosectores){
-             poblaciones.put(macrosector, new LinkedList<>());
+    public static HashMap<String,Poblaciones_macroSector> loadJSON(String dir) {
+         HashMap<String,Poblaciones_macroSector> poblaciones=new HashMap<>();
+         for(String macrosector:Poblaciones_macroSector.configAV_Hab.keySet()){
+             poblaciones.put(macrosector, new Poblaciones_macroSector(macrosector));
          }
         try {
            String JSON_FILE=dir+"poblaciones.geojson";
@@ -42,7 +43,7 @@ public class DAOPoblacion {
                 Poblacion poblacion=new Poblacion(features.getJsonObject(i));
                 String macrosector=poblacion.getMacroSector();
                 if(poblaciones.containsKey(macrosector)){
-                poblaciones.get(macrosector).add(poblacion);
+                poblaciones.get(macrosector).getPoblaciones().add(poblacion);
                 }
                 else{
                     System.out.println("Dato perdido: "+macrosector);

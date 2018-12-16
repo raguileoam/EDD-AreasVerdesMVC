@@ -4,6 +4,13 @@
     Author     : raguileoam
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Set"%>
+<%@page import="Modelo.Poblaciones_macroSector"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="java.util.List"%>
+<%@page import="Modelo.Poblacion"%>
+<%@page import="java.util.HashMap"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -34,27 +41,56 @@
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href=”http://osm.org/copyright”>OpenStreetMap</a> contributors'
             }).addTo(map);
-            var dataPoblacion =${datosPoblacion};
-            //"Poniente","Centro","Pueblo Nuevo","Amanecer","Costanera","El Carmen","Pedro de Valdivia","Labranza";
-            //var datalayerPoblacion = L.geoJson(dataPoblacion, {onEachFeature: poblaOnEachFeature, style: style});
-            //datalayerPoblacion.addTo(map);
+            
+            <% 
+            Set<String> macrosectores=(Set<String>)request.getAttribute("macrosectores");
+            HashMap<String,Poblaciones_macroSector> datosPoblacionx=(HashMap<String,Poblaciones_macroSector>)request.getAttribute("datosPoblacion");
+            List<String> group1=new LinkedList<String>();
+            List<String> group2=new LinkedList<String>();  
+            List<String> group3=new LinkedList<String>();
+            List<String> group4=new LinkedList<String>();
+            List<String> group5=new LinkedList<String>();
+            List<String> group6=new LinkedList<String>();
+            
+            for(String macrosector:macrosectores){
+                String[] tokens=macrosector.split(" ");
+                String first=tokens[tokens.length-1].toLowerCase();
+                Poblaciones_macroSector poblacion=datosPoblacionx.get(macrosector);
+                out.println("var "+first+"=L.geoJson("+poblacion.getPoblaciones()+",{onEachFeature: poblaOnEachFeature, style: style});");
+                if(poblacion.getAv_habitante()< 5){
+                    group1.add(first);
+                }
+                else if(poblacion.getAv_habitante()< 6){
+                    group2.add(first);}
+                else if(poblacion.getAv_habitante()<7){
+                    group3.add(first);
+                }
+                else if(poblacion.getAv_habitante()< 8){
+                    group4.add(first);
+                }
+                else if(poblacion.getAv_habitante()< 9){
+                group5.add(first);
+                }
+                else{group6.add(first);}
+                
+            }
+            out.println("var group1 = L.layerGroup("+group1.toString()+");");
+            out.println("var group2 = L.layerGroup("+group2.toString()+");");
+            out.println("var group3 = L.layerGroup("+group3.toString()+");");
+            out.println("var group4 = L.layerGroup("+group4.toString()+");");
+            out.println("var group5 = L.layerGroup("+group5.toString()+");");
+            out.println("var group6 = L.layerGroup("+group6.toString()+");");
+            out.println("var group = L.layerGroup([group6,group5,group4,group3,group2,group1]);");
 
-            var poniente = L.geoJson(${datosPoblacionx.get("Poniente")}, {onEachFeature: poblaOnEachFeature, style: style});
-            var centro = L.geoJson(${datosPoblacionx.get("Centro")}, {onEachFeature: poblaOnEachFeature, style: style});
-            var puebloNuevo = L.geoJson(${datosPoblacionx.get("Pueblo Nuevo")}, {onEachFeature: poblaOnEachFeature, style: style});
-            var amanecer = L.geoJson(${datosPoblacionx.get("Amanecer")}, {onEachFeature: poblaOnEachFeature, style: style});
-            var costanera = L.geoJson(${datosPoblacionx.get("Costanera Cautín")}, {onEachFeature: poblaOnEachFeature, style: style});
-            var carmen = L.geoJson(${datosPoblacionx.get("El Carmen")}, {onEachFeature: poblaOnEachFeature, style: style});
-            var valdivia = L.geoJson(${datosPoblacionx.get("Pedro de Valdivia")}, {onEachFeature: poblaOnEachFeature, style: style});
-            var labranza = L.geoJson(${datosPoblacionx.get("Labranza")}, {onEachFeature: poblaOnEachFeature, style: style});
-            var group = L.layerGroup([poniente, centro, puebloNuevo, amanecer, costanera, carmen, valdivia, labranza]);
 
+            
+            %>
             function poblaOnEachFeature(feature, featureLayer) {
                 featureLayer.on({
                     mouseover: highlightFeature
                 });
                 var area = turf.area(feature.geometry);
-                featureLayer.bindPopup("Poblacion: turf " + area.toString() + " json" + feature.properties.Shape__Area);
+                featureLayer.bindPopup("Población: <br />Area: " + area.toString()+" m²");
             }
             function style(feature) {
                 return {
@@ -68,12 +104,11 @@
             }
 
             function getColor(d) {
-                return d < 3 ? '#800026' :
-                        d < 5 ? '#BD0026' :
+                return d < 5 ? '#800026' :
+                        d < 6 ? '#BD0026' :
                         d < 7 ? '#E31A1C' :
-                        d < 9 ? '#FD8D3C' :
-                        d < 13 ? '#FEB24C' :
-                        d < 15 ? '#FED976' :
+                        d < 8 ? '#FD8D3C' :
+                        d < 9 ? '#FEB24C' :
                         '#FFEDA0';
             }
             var dataAreasVerdes =${datosAreasVerdes};
@@ -82,7 +117,7 @@
 
 
             function avOnEachFeature(feature, featureLayer) {
-                featureLayer.bindPopup("Area Verde: " + feature.properties.AREA);
+                featureLayer.bindPopup("Area Verde: <br /> Area: " + feature.properties.AREA+" m²");
 
             }
 
@@ -99,8 +134,11 @@
             };
 // method that we will use to update the control based on feature properties passed
             info.update = function (props) {
-                this._div.innerHTML = '<h4>Poblacion por m² respecto a areas verdes</h4>' + (props ?
-                        '<b>' + props.DISTRITO + '' + '</b> en ' + props.MACRO_SECTOR + '<br />' + props.PERSONAS + ' personas / mi<sup>2</sup>'
+                this._div.innerHTML = '<h4>Areas Verdes por persona en Macro Sector: </h4>' + (props ?
+                         '<b>'+props.AV_HABITANTE+'m<sup>2</sup> por habitante</b><br /><br />'+
+                        '<b>'+props.DISTRITO+'</b> en Macro Sector <b>' + props.MACRO_SECTOR + '</b><br />'+ 
+                         props.PERSONAS + ' personas / m<sup>2</sup>'+'<br />'
+                                
                         : 'Elija un lugar');
             };
             info.addTo(map);
@@ -108,7 +146,7 @@
             var legend = L.control({position: 'bottomright'});
             legend.onAdd = function (map) {
                 var div = L.DomUtil.create('div', 'info legend'),
-                        grades = [4, 5, 7, 9, 13, 15],
+                        grades = [0,5, 6, 7, 8, 9],
                         labels = [];
                 // loop through our density intervals and generate a label with a colored square for each interval
                 for (var i = 0; i < grades.length; i++) {
