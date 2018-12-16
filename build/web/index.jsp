@@ -15,8 +15,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Areas Verdes</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
@@ -31,10 +32,44 @@
 
 
         <script src="lib/SliderControl.js" type="text/javascript"></script>
-    </head>
-    <body>
+        <!-- CSS
+   ================================================== -->
+   <link rel="stylesheet" href="css/base.css"> 
+   <link rel="stylesheet" href="css/vendor.css"> 
+   <link rel="stylesheet" href="css/main.css">    
 
-        <h1>Areas Verdes</h1>
+   <!-- script
+   ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+
+   <!-- favicons
+    ================================================== -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    </head>
+
+<body id="top">
+    
+    <!-- header 
+   ================================================== -->
+   <header class="main-header">
+    
+    <div class="logo">
+          <a href="./Home">Areas Verdes</a>
+       </div>
+       <div class="logo2">
+          <a href="http://www.ufro.cl">UFRO</a>
+       </div> 
+   </header>
+
+    <!-- main content wrap
+   ================================================== -->
+   <div id="main-content-wrap">
+
+        <!-- main content wrap
+    ================================================== -->
+    <section id="intro">
         <div id="map"></div>
         <script>
             var map = L.map('map').setView([-38.736277, -72.590618], 13);
@@ -46,7 +81,7 @@
             Set<String> macrosectores=(Set<String>)request.getAttribute("macrosectores");
             HashMap<String,Poblaciones_macroSector> datosPoblacionx=(HashMap<String,Poblaciones_macroSector>)request.getAttribute("datosPoblacion");
             List<String> group1=new LinkedList<String>();
-            List<String> group2=new LinkedList<String>();  
+            List<String> group2=new LinkedList<String>();
             List<String> group3=new LinkedList<String>();
             List<String> group4=new LinkedList<String>();
             List<String> group5=new LinkedList<String>();
@@ -90,7 +125,7 @@
                     mouseover: highlightFeature
                 });
                 var area = turf.area(feature.geometry);
-                featureLayer.bindPopup("Población: <br />Area: " + area.toString()+" m²");
+                featureLayer.bindPopup("Población:<br />Area: " + area.toString()+" m²");
             }
             function style(feature) {
                 return {
@@ -152,7 +187,7 @@
                 for (var i = 0; i < grades.length; i++) {
                     div.innerHTML +=
                             '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-                            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + ' m²/habitante' + '<br>' : '+');
+                            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + ' m²/habitante' + '<br>' : '+ m²/habitante');
                 }
                 return div;
             };
@@ -170,5 +205,53 @@
 
 
         </script>
-    </body>
+        </section> <!-- /intro -->
+
+   </div> <!-- /main-content-wrap -->
+
+
+   <!-- footer
+    ================================================== -->
+    <footer id="main-footer">
+
+       <div class="footer-info-wrap">
+
+        <div class="row footer-info">
+<h4><i class="icon-location-map-1"></i>Objetivo</h4>
+
+                    <p>
+                 <font color="white">El objetivo principal de este proyecto es visualizar la desigualdad de áreas verdes disponibles por persona en los distintos macrosectores de la ciudad de Temuco</font>
+                 </p>
+                <h4><i class="icon-organization-hierarchy-3"></i>Modo de uso y herramientas</h4>
+                    <font color="white">El mapa muestra con una escala de colores los distintos níveles de disponibilidad de áreas verdes por habitante, por macrosector de la ciudad de Temuco. Es posible también, usando el slider ubicado en la esquina inferior derecha, a un lado de la leyenda, para filtrar algunos de los níveles establecidos.
+                    Haciendo clic sobre un sector se mostrará información relativa a ese sector.</font>
+            </div>
+                
+            </div>
+       </div> <!-- /footer-info-wrap -->
+        
+       <div class="footer-bottom"> 
+     
+    </div>
+        
+   </footer>   
+
+   <div id="go-top">
+        <a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
+    </div>
+
+   <!-- preloader
+   ================================================== -->
+   <div id="preloader"> 
+        <div id="loader"></div>
+   </div> 
+
+   <!-- Java Script
+   ================================================== --> 
+   <script src="js/jquery-2.1.3.min.js"></script>
+   <script src="js/plugins.js"></script>
+   <script src="js/main.js"></script>
+
+</body>
+
 </html>

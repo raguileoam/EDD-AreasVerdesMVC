@@ -38,7 +38,7 @@ public class Home extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");   
         //String dir="/datos/";
-        String dir="/home/raguileoam/Documentos/5 Semestre/Estructura de datos/Proyecto Semestral/AreasVerdesMVC/datos/";
+        String dir="C:\\Users\\Sebastian\\Documents\\NetBeansProjects\\EDD-AreasVerdesMVC\\datos\\";
         Mapa mapa=new Mapa(dir);
         request.setAttribute("datosPoblacion",mapa.getPoblaciones());
         request.setAttribute("datosAreasVerdes", mapa.getAreasVerdes());
