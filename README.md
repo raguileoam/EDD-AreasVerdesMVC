@@ -12,7 +12,6 @@
    * [Importar este proyecto](#como-usar-este-proyecto)
    * [Dependencias](#dependencias)
    * [Datos utilizados](#datos-utilizados)
-   * [Problemas](#problemas)
    
 ## Descripción de proyecto
 ### Problema que se intenta resolver:
