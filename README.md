@@ -1,6 +1,9 @@
 # Areas Verdes
-+ Asignatura : Estructuras de Datos
-+ Nombre : 
+#### Asignatura : Estructuras de Datos
+#### Integrantes: 
++ Aliwen Melillán
++ Sebastián Contreras
++ Sebastián Robles
 
 # Contenidos
 
@@ -11,8 +14,11 @@
    * [Problemas](#problemas)
    
 ## Resumen
+Este proyecto permite:
++ Identificar los puntos críticos donde la contaminación puede ser mayor.
++ Visualizar gráficas de población por respecto a la área verde.
++ Visualizar la desigualdad de áreas verdes por persona en Temuco.
 
-Visualizar la desigualdad de áreas verdes por persona en Temuco.
 
 ## Como usar este proyecto
 
