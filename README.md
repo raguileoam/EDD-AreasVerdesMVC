@@ -55,13 +55,14 @@ El objetivo de este proyecto que estas personas puedan visualizar la desigualdad
   
 ## Datos utilizados
 
- + [GeoJson Población Temuco extraído del INE](http://ine-chile.maps.arcgis.com/apps/webappviewer/index.html?id=bc3cfbd4feec49699c11e813ae9a629f)
++ [GeoJson Población Temuco extraído del INE](http://ine-chile.maps.arcgis.com/apps/webappviewer/index.html?id=bc3cfbd4feec49699c11e813ae9a629f)
+  + Se utilizan datos como el aŕea, personas en ese área, y el distrito en donde está el área.
+  + Se añaden datos como el macro sector y el valor de áreas verdes por persona en el macro sector.
 + [Json Areas Verdes Temuco](http://datos.cedeus.cl/layers/geonode:areas_verdes_prc)
+  + Se utilizan datos como el aŕea, y el distrito en donde está el área.
+  + Se añaden datos como el macro sector y el valor de áreas verdes por persona en el macro sector.
 
 
 
-## Problemas
 
-El principal obstáculo del proyecto es que las fuentes de datos de los mapas desaparezcan. Además los datos que se extraen provienen de distintas fuentes lo que dificulta su relación.
-Menores obstáculos serían que las librerías no funcionen como se quería o no se le pueda dar el uso que se necesita.
 
