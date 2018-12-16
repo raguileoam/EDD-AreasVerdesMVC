@@ -8,7 +8,7 @@
 
 # Contenidos
 
-   * [Descripción del proyecto](#descripcion-de-proyecto)
+   * [Descripción del proyecto](#descripción-de-proyecto)
    * [Importar este proyecto](#como-usar-este-proyecto)
    * [Dependencias](#dependencias)
    * [Datos utilizados](#datos-utilizados)
