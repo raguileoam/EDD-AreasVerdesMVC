@@ -1,4 +1,5 @@
-# Areas Verdes
+# Visualización de la desigualdad de áreas verdes por persona en los macro sectores de Temuco.
+
 #### Asignatura : Estructuras de Datos
 #### Integrantes: 
 + Aliwen Melillán
@@ -7,16 +8,17 @@
 
 # Contenidos
 
-   * [Descripción del proyecto](#resumen)
+   * [Descripción del proyecto](#descripcion-de-proyecto)
    * [Importar este proyecto](#como-usar-este-proyecto)
    * [Dependencias](#dependencias)
    * [Datos utilizados](#datos-utilizados)
    * [Problemas](#problemas)
    
-## Resumen
-Este proyecto permite:
-+ Visualizar población por respecto a la área.
-+ Visualizar la desigualdad de áreas verdes por persona en los macrosectores de Temuco.
+## Descripción de proyecto
+### Problema que se intenta resolver:
+En Temuco existe una desigualdad de áreas verdes por persona, no todos los macro sectores de esta ciudad cumple con el estándar internacional de 9 m2/habitante recomendada por la OMS y además no todas las personas son conscientes de este posible deficit en el lugar en el que viven.
+
+El objetivo de este proyecto que estas personas puedan visualizar la desigualdad de áreas verdes por persona en los macro sectores de Temuco.
 
 
 ## Como usar este proyecto
