@@ -54,7 +54,8 @@ Este proyecto permite:
   
 ## Datos utilizados
 
-
+ + [GeoJson Población Temuco extraído del INE](http://ine-chile.maps.arcgis.com/apps/webappviewer/index.html?id=bc3cfbd4feec49699c11e813ae9a629f)
++ [Json Areas Verdes Temuco](http://datos.cedeus.cl/layers/geonode:areas_verdes_prc)
 
 
 
