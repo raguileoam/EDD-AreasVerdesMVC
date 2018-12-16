@@ -15,9 +15,8 @@
    
 ## Resumen
 Este proyecto permite:
-+ Identificar los puntos críticos donde la contaminación puede ser mayor.
-+ Visualizar gráficas de población por respecto a la área verde.
-+ Visualizar la desigualdad de áreas verdes por persona en Temuco.
++ Visualizar población por respecto a la área.
++ Visualizar la desigualdad de áreas verdes por persona en los macrosectores de Temuco.
 
 
 ## Como usar este proyecto
