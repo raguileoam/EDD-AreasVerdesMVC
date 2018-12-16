@@ -1,6 +1,9 @@
 # Areas Verdes
-+ Asignatura : Estructuras de Datos
-+ Nombre : 
+#### Asignatura : Estructuras de Datos
+#### Integrantes: 
++ Aliwen Melillán
++ Sebastián Contreras
++ Sebastián Robles
 
 # Contenidos
 
