@@ -32,7 +32,7 @@ El objetivo de este proyecto que estas personas puedan visualizar la desigualdad
 ![](https://i.imgur.com/0N2IAWa.png)
 
 4. Correr el proyecto en NetBeans
-![](https://i.imgur.com/ifADNkG.png)
+![](https://i.imgur.com/CsiBokA.png)
 
 ## Dependencias
 
