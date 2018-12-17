@@ -104,7 +104,7 @@ El objetivo de este proyecto que estas personas puedan visualizar la desigualdad
 <details><summary>Adulta Mayor</summary>
 <p>
   
-<img src="https://lh3.googleusercontent.com/OmeLvohdoiuFUvF9OcZiBtW7cIxLcQbHJKF2ip-y9dtc-YppORElcvWg1YEH0hP2fO4bhblpKex8TPOxPkZ3=w1301-h658" alt="Adulta Mayor" width="500" height="300">
+<img src="https://i.imgur.com/5wMzOpv.jpg" alt="Adulta Mayor" width="500" height="300">
 
 #### Observaciones
 * __¿Estima si en el lugar en el que vive existe escasez de áreas verdes?__
