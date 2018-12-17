@@ -72,9 +72,11 @@ El objetivo de este proyecto que estas personas puedan visualizar la desigualdad
 <img src="https://i.imgur.com/gZYrgo3.jpg" alt="Estudiante UCTt" width="500" height="300">
 
 #### Observaciones
+* __¿Estima si en el lugar en el que vive existe escasez de áreas verdes?__
+  - No.
 * __¿Fue necesario explicarle lo que mostraba el mapa?__
   - No, con la leyenda mostrada en el mapa fue suficiente.
-* __¿Le fue posible encontrar su sector?__
+* __¿Le fue posible encontrar su sector y verificar si había escasez de áreas verdes?__
   - Sí, su sector era Pueblo Nuevo.
 
 
@@ -88,11 +90,13 @@ El objetivo de este proyecto que estas personas puedan visualizar la desigualdad
 <img src="https://i.imgur.com/r8OTf9y.jpg" alt="Estudiante Liceo" width="500" height="300">
 
 #### Observaciones
-
+* __¿Estima si en el lugar en el que vive existe escasez de áreas verdes?__
+  - No.
 * __¿Fue necesario explicarle lo que mostraba el mapa?__
   - Sí, no fue suficiente con lo que se mostraba en la leyenda del mapa.
-* __¿Le fue posible encontrar su sector?__
+* __¿Le fue posible encontrar su sector y verificar si había escasez de áreas verdes?__
   - Sí, su sector era Pueblo Nuevo.
+
 
 </p>
 </details>
