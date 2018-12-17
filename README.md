@@ -118,6 +118,23 @@ El objetivo de este proyecto que estas personas puedan visualizar la desigualdad
 </p>
 </details>
 
+<details><summary>Adulta Mayor</summary>
+<p>
+  
+<img src="https://i.imgur.com/AKUmXysg.jpg" alt="Adulta Mayor" width="418" height="300">
+
+#### Observaciones
+__Esta persona vive en Villarrica__
+* __¿Fue necesario explicarle lo que mostraba el mapa?__
+  - Sí, al principio no logró identificar que lugar se mostraba en el mapa.
+* __¿Le fue posible identificar la finalidad de la leyenda del mapa?__
+  - Determinó inmediatamente una relación entre los colores y el significado esperado (rojo como situación adversa, colores claros para lo contrario). Luego de leer el resto de información del mapa y de la página entendió completamente la finalidad.
+* __Luego de ver el mapa, ¿cambia su percepción respecto a la ciudad de Temuco y sus áreas verdes?__
+  - No, siempre consideró que en Temuco eran escasas, aunque le sorprende que el centro de Temuco aparezca sin escasez.
+
+
+</p>
+</details>
 
 
 
