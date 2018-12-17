@@ -101,6 +101,22 @@ El objetivo de este proyecto que estas personas puedan visualizar la desigualdad
 </p>
 </details>
 
+<details><summary>Adulta Mayor</summary>
+<p>
+  
+<img src="https://lh3.googleusercontent.com/OmeLvohdoiuFUvF9OcZiBtW7cIxLcQbHJKF2ip-y9dtc-YppORElcvWg1YEH0hP2fO4bhblpKex8TPOxPkZ3=w1301-h658" alt="Adulta Mayor" width="500" height="300">
+
+#### Observaciones
+* __¿Estima si en el lugar en el que vive existe escasez de áreas verdes?__
+  - No, al contrario,piensa que el sector en donde vive hay muchas áreas verdes.
+* __¿Fue necesario explicarle lo que mostraba el mapa?__
+  - Sí, por problemas de visión. Con explicar el modo de uso y herramientas de la página lo entendió mejor.
+* __¿Le fue posible encontrar su sector y verificar si había escasez de áreas verdes?__
+  - En un principio no, pero al mover el mapa logró encontrar el sector. Su sector era Labranza y se dió cuenta que habia menos áreas verdes de lo que pensaba.
+
+
+</p>
+</details>
 
 
 
