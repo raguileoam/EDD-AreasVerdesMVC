@@ -223,7 +223,7 @@
                  <font color="white">El objetivo principal de este proyecto es visualizar la desigualdad de áreas verdes disponibles por persona en los distintos macrosectores de la ciudad de Temuco</font>
                  </p>
                 <h4><i class="icon-organization-hierarchy-3"></i>Modo de uso y herramientas</h4>
-                    <font color="white">El mapa muestra con una escala de colores los distintos níveles de disponibilidad de áreas verdes por habitante, por macrosector de la ciudad de Temuco. Es posible también, usando el slider ubicado en la esquina inferior derecha, a un lado de la leyenda, para filtrar algunos de los níveles establecidos.
+                    <font color="white">El mapa muestra con una escala de colores los distintos níveles de disponibilidad de áreas verdes por habitante, por macrosector de la ciudad de Temuco. Es posible también, usando el slider ubicado en la esquina inferior derecha, a un lado de la leyenda, filtrar algunos de los níveles establecidos.
                     Haciendo clic sobre un sector se mostrará información relativa a ese sector.</font>
             </div>
                 
