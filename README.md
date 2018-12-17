@@ -12,6 +12,7 @@
    * [Importar este proyecto](#como-usar-este-proyecto)
    * [Dependencias](#dependencias)
    * [Datos utilizados](#datos-utilizados)
+   * [Resultados de evaluación de usuarios](#evaluacion-de-usuarios)   
    
 ## Descripción de proyecto
 ### Problema que se intenta resolver:
@@ -60,6 +61,41 @@ El objetivo de este proyecto que estas personas puedan visualizar la desigualdad
 + [Json Areas Verdes Temuco](http://datos.cedeus.cl/layers/geonode:areas_verdes_prc)
   + Se utilizan datos como el aŕea, y el distrito en donde está el área.
   + Se añaden datos como el macro sector y el valor de áreas verdes por persona en el macro sector.
+  
+  
+  
+## Evaluacion de usuarios
+
+<details><summary>Estudiante UCT</summary>
+<p>
+
+<img src="https://i.imgur.com/gZYrgo3.jpg" alt="Estudiante UCTt" width="500" height="300">
+
+#### Observaciones
+* __¿Fue necesario explicarle lo que mostraba el mapa?__
+  - No, con la leyenda mostrada en el mapa fue suficiente.
+* __¿Le fue posible encontrar su sector?__
+  - Sí, su sector era Pueblo Nuevo.
+
+
+
+</p>
+</details>
+
+<details><summary>Estudiante Liceo</summary>
+<p>
+  
+<img src="https://i.imgur.com/r8OTf9y.jpg" alt="Estudiante Liceo" width="500" height="300">
+
+#### Observaciones
+
+* __¿Fue necesario explicarle lo que mostraba el mapa?__
+  - Sí, no fue suficiente con lo que se mostraba en la leyenda del mapa.
+* __¿Le fue posible encontrar su sector?__
+  - Sí, su sector era Pueblo Nuevo.
+
+</p>
+</details>
 
 
 
